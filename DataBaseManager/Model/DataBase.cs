@@ -47,12 +47,13 @@ namespace DataBaseManager.Model
                     RemovePrimaryKey(connection, ListTables, TableName);
 
                 SQLCommand = $"ALTER TABLE {TableName} " +
-                             $"ADD {NewColumn.NameItem} {NewColumn.TypeItem} {PrimaryKeyValue}";
+                             $"ADD {NewColumn.NameItem} {NewColumn.TypeItem}";
 
                 using (var command = new NpgsqlCommand(SQLCommand, connection))
                 {
                     command.ExecuteNonQuery();
                 }
+                AddPrimaryKey(connection, ListTables, TableName, NewColumn.NameItem);
                 //Добавляем новый аттрибут в список
                 ListTables.Where(x => x.NameTable == TableName).Single().ListAttributes.Add(NewColumn);
             }
