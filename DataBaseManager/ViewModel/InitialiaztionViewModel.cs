@@ -75,16 +75,10 @@ namespace DataBaseManager.ViewModel
 
         public InitialiaztionViewModel(MainViewModel mainVM)
         {
-            Host = "LocalHost";
-            User = "postgres";
-            DBname = "sales";
-            Password = "1749";
-            Port = 5432;
-
-            //Host = string.Empty;
-            //User = string.Empty;
-            //DBname = string.Empty;
-            //Password = string.Empty;
+            Host = string.Empty;
+            User = string.Empty;
+            DBname = string.Empty;
+            Password = string.Empty;
 
             MainVM = mainVM;
             toDataBasePageComamnd = new ToDataBasePageComamnd(mainVM);
