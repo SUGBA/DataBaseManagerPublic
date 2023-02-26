@@ -41,7 +41,7 @@ namespace DataBaseManager.ViewModel.Commands
                 case ListMods.RemoveColumn:
                     return dataBaseVM.ActiveColumn != null;
                 case ListMods.RemovePrimaryKey:
-                    return dataBaseVM.ActiveColumn != null;
+                    return dataBaseVM.ActiveTable != null;
                 case ListMods.AddPrimaryKey:
                     return dataBaseVM.ActiveColumn != null;
                 default:

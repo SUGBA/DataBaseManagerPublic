@@ -114,7 +114,7 @@ namespace DataBaseManager.Model
                 ConstraintName = $"{TableName}_pkey";
                 string SQLCommand = $"ALTER TABLE {TableName} " +
                                     $"ADD CONSTRAINT {ConstraintName} " +
-                                    $"PRIMARY KEY({ColumnName});";
+                                    $"PRIMARY KEY({ColumnName})";
                 using (var command = new NpgsqlCommand(SQLCommand, connection))
                 {
                     command.ExecuteNonQuery();

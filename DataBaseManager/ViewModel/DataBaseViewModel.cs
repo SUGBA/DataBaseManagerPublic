@@ -96,7 +96,14 @@ namespace DataBaseManager.ViewModel
         }
         public void RemoveTable()
         {
-            DataBase.RemoveTable(connection, ListTables, ActiveTable.NameTable);
+            try
+            {
+                DataBase.RemoveTable(connection, ListTables, ActiveTable.NameTable);
+            }
+            catch (Exception)
+            {
+                System.Windows.MessageBox.Show("Failed remove table");
+            }
         }
         public void Refresh()
         {
@@ -104,15 +111,36 @@ namespace DataBaseManager.ViewModel
         }
         public void RemoveColumn()
         {
-            DataBase.RemoveColumn(connection, ListTables, ActiveTable.NameTable, ActiveColumn.NameItem);
+            try
+            {
+                DataBase.RemoveColumn(connection, ListTables, ActiveTable.NameTable, ActiveColumn.NameItem);
+            }
+            catch (Exception)
+            {
+                System.Windows.MessageBox.Show("Failed remove attribute");
+            }
         }
         public void RemovePrimaryKey()
         {
-            DataBase.RemovePrimaryKey(connection, ListTables, ActiveTable.NameTable);
+            try
+            {
+                DataBase.RemovePrimaryKey(connection, ListTables, ActiveTable.NameTable);
+            }
+            catch (Exception)
+            {
+                System.Windows.MessageBox.Show("Failed remove primary key");
+            }
         }
         public void AddPrimaryKey()
         {
-            DataBase.AddPrimaryKey(connection, ListTables, ActiveTable.NameTable, ActiveColumn.NameItem);
+            try
+            {
+                DataBase.AddPrimaryKey(connection, ListTables, ActiveTable.NameTable, ActiveColumn.NameItem);
+            }
+            catch (Exception)
+            {
+                System.Windows.MessageBox.Show("Failed add primary key");
+            }
         }
 
         #endregion

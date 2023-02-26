@@ -11,13 +11,6 @@ namespace DataBaseManager
 {
     public partial class App : Application
     {
-        //Метод обрабатывающий исключения и не дающий приложению закрыться из-за exception
-        void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
-        {
-            // Process unhandled exception
-            MessageBox.Show(e.Exception.Message);
-            // Prevent default unhandled exception processing
-            e.Handled = true;
-        }
+
     }
 }
