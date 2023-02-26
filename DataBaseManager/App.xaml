@@ -1,0 +1,131 @@
+﻿<Application x:Class="DataBaseManager.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:DataBaseManager"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <Style x:Key="TextBlock_H1" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="23"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="Foreground" Value="#483d8b"/>
+        </Style>
+
+        <Style x:Key="TextBlock_H2" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontStyle" Value="Oblique"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="Foreground" Value="#483d8b"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+        </Style>
+
+        <Style x:Key="TextBox_H2" TargetType="TextBox">
+            <Setter Property="BorderBrush" Value="#0000"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="#483d8b"/>
+            <Setter Property="Background" Value="#0000"/>
+        </Style>
+
+        <Style x:Key="Border_H2" TargetType="Border">
+            <Setter Property="CornerRadius" Value="1"/>
+            <Setter Property="BorderBrush" Value="#483d8b"/>
+            <Setter Property="BorderThickness" Value="1.3"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="Border_H3" TargetType="Border">
+            <Setter Property="CornerRadius" Value="1"/>
+            <Setter Property="BorderBrush" Value="#483d8b"/>
+            <Setter Property="BorderThickness" Value="1.5"/>
+            <Setter Property="CornerRadius" Value="3"/>
+        </Style>
+
+        <Style x:Key="Button_H3" TargetType="Button">
+            <Setter Property="Foreground" Value="#483d8b"/>
+            <Setter Property="Background" Value="#0000"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="1.3"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        </Style>
+
+        <Style x:Key="ButtonTrigger_H3" BasedOn="{StaticResource Border_H3}" TargetType="Border">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="Green"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="TextBlock_H3" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontStyle" Value="Oblique"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+        </Style>
+
+        <Style x:Key="RadioButton_H2" TargetType="RadioButton">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="Heavy"/>
+        </Style>
+
+        <Style x:Key="ListBoxItem_H2" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Margin" Value="4,0,0,0"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+
+        <Style x:Key="Border_H1" TargetType="Border">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Margin" Value="5,2,5,2"/>
+            <Setter Property="Background" Value="#0000"/>
+        </Style>
+
+        <Style x:Key="TextBlockGray_H1" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="Foreground" Value="Gray"/>
+        </Style>
+
+        <Style x:Key="ListBox_H2" TargetType="ListBox">
+            <Setter Property="Background" Value="#0000"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="ItemContainerStyle">
+                <Setter.Value>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="Margin" Value="0,2,0,2"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <ContentPresenter/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="Green"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Application.Resources>
+</Application>

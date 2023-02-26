@@ -1,0 +1,294 @@
+﻿<Page x:Class="DataBaseManager.View.DataBasePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DataBaseManager.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="420" d:DesignWidth="800"
+      Background="LightCyan"
+      Title="DataBasePage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="DataBaseLeftPanel" 
+              Grid.Column="0">
+            <StackPanel>
+                <TextBlock Text="Tables" 
+                           Style="{StaticResource TextBlockGray_H1}"/>
+
+                <ListBox Name="ListTables" 
+                         ItemsSource="{Binding ListTables}" 
+                         SelectedItem="{Binding ActiveTable}" 
+                         Style="{StaticResource ListBox_H2}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+
+                            <StackPanel>
+                                <TextBlock
+                                    Text="{Binding NameTable}" 
+                                    Style="{StaticResource ListBoxItem_H2}"/>
+                                <Separator Background="#483d8b"/>
+                            </StackPanel>
+
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+            </StackPanel>
+        </Grid>
+
+        <Grid x:Name="DataBaseCentralPanel" 
+              Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid Name="ActiveItems">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Column="0" Style="{StaticResource Border_H1}">
+                    <StackPanel>
+                        <TextBlock Text="ActiveTable" 
+                           Style="{StaticResource TextBlockGray_H1}" 
+                           FontStyle="Normal"
+                           Foreground="gray"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"/>
+
+                        <Separator/>
+
+                        <TextBlock Text="{Binding ActiveTable.NameTable}"
+                           Style="{StaticResource TextBlock_H2}" 
+                           FontSize="16"
+                           Foreground="Green"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,2"/>
+                    </StackPanel>
+
+                </Border>
+
+                <Border Grid.Column="1" Style="{StaticResource Border_H1}">
+                    <StackPanel>
+                        <TextBlock Text="ActiveColumn" 
+                           Style="{StaticResource TextBlockGray_H1}" 
+                           FontStyle="Normal"
+                           HorizontalAlignment="Center"/>
+
+                        <Separator/>
+
+                        <TextBlock Text="{Binding ActiveColumn.NameItem}" 
+                           Style="{StaticResource TextBlock_H2}" 
+                           FontSize="16"
+                           Foreground="Green"
+                           HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+            </Grid>
+
+            <ListBox x:Name="ListColumn"
+                     Grid.Row="1" 
+                     ItemsSource="{Binding ActiveTable.ListAttributes}" 
+                     SelectedItem="{Binding ActiveColumn}" 
+                     Style="{StaticResource ListBox_H2}" >
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="2"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Style="{StaticResource ButtonTrigger_H3}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <StackPanel Grid.Row="0" >
+                                    <TextBlock  Text="{Binding NameItem}" 
+                                                Style="{StaticResource TextBlock_H2}"
+                                                HorizontalAlignment="Center"/>
+                                    <Separator Margin="0,3" Background="#483d8b"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="1">
+                                    <TextBlock
+                                        Text="{Binding TypeItem}" 
+                                        Style="{StaticResource ListBoxItem_H2}"/>
+                                    <Separator Background="#483d8b"/>
+                                </StackPanel>
+
+                                <TextBlock Grid.Row="2"
+                                           Text="{Binding IsPrimaryKey}"
+                                           Style="{StaticResource ListBoxItem_H2}"/>
+                            </Grid>
+                        </Border>
+
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+            </ListBox>
+        </Grid>
+
+        <Grid x:Name="DataBaseRightPanel" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="TopPanel" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Button Grid.Column="0" 
+                        Grid.Row="0" 
+                        Style="{StaticResource Button_H3}"
+                        Command="{Binding routeCommand}"
+                        CommandParameter="ReName">
+                    <Border Style="{StaticResource Border_H3}">
+                        <TextBlock Text="ReName" 
+                                   Style="{StaticResource TextBlock_H3}" 
+                                   Margin="3,0,3,0"/>
+                    </Border>
+                    <Button.ToolTip>
+                        <TextBlock Text="Rename a table"/>
+                    </Button.ToolTip>
+                </Button>
+                <Button Grid.Column="1" 
+                        Grid.Row="0" 
+                        Style="{StaticResource Button_H3}"
+                        Command="{Binding routeCommand}"
+                        CommandParameter="AddColumn">
+                    <Border Style="{StaticResource Border_H3}">
+                        <TextBlock Text="AddColumn" 
+                                   Style="{StaticResource TextBlock_H3}" 
+                                   Margin="3,0,3,0"/>
+                    </Border>
+                    <Button.ToolTip>
+                        <TextBlock Text="Add an attribute"/>
+                    </Button.ToolTip>
+                </Button>
+                <Button Grid.Column="2" 
+                        Grid.Row="0" 
+                        Style="{StaticResource Button_H3}"
+                        Command="{Binding routeCommand}"
+                        CommandParameter="RemoveTable">
+                    <Border Style="{StaticResource Border_H3}">
+                        <TextBlock Text="Table" 
+                                   TextDecorations="Strikethrough" 
+                                   Style="{StaticResource TextBlock_H3}" 
+                                   Margin="3,0,3,0"/>
+                    </Border>
+                    <Button.ToolTip>
+                        <TextBlock Text="Delete the selected Table"/>
+                    </Button.ToolTip>
+                </Button>
+                <Button Grid.Column="3" 
+                        Grid.Row="0" 
+                        Style="{StaticResource Button_H3}"
+                        Command="{Binding routeCommand}"
+                        CommandParameter="Refresh">
+                    <Border Style="{StaticResource Border_H3}">
+                        <TextBlock Text="Refresh" 
+                                   Style="{StaticResource TextBlock_H3}" 
+                                   Margin="3,0,3,0"/>
+                    </Border>
+                    <Button.ToolTip>
+                        <TextBlock Text="Refresh list of tables"/>
+                    </Button.ToolTip>
+                </Button>
+                <Button Grid.Column="0" 
+                        Grid.Row="1" 
+                        Style="{StaticResource Button_H3}"
+                        Command="{Binding routeCommand}"
+                        CommandParameter="CreateTable">
+                    <Border Style="{StaticResource Border_H3}">
+                        <TextBlock Text="Create" 
+                                   Style="{StaticResource TextBlock_H3}" 
+                                   Margin="3,0,3,0"/>
+                    </Border>
+                    <Button.ToolTip>
+                        <TextBlock Text="Create Table"/>
+                    </Button.ToolTip>
+                </Button>
+                <Button Grid.Column="1" 
+                        Grid.Row="1" 
+                        Style="{StaticResource Button_H3}"
+                        Command="{Binding routeCommand}"
+                        CommandParameter="RemoveColumn">
+                    <Border Style="{StaticResource Border_H3}">
+                        <TextBlock Text="Column" 
+                                   TextDecorations="Strikethrough" 
+                                   Style="{StaticResource TextBlock_H3}" 
+                                   Margin="3,0,3,0"/>
+                    </Border>
+                    <Button.ToolTip>
+                        <TextBlock Text="Delete the selected attribute"/>
+                    </Button.ToolTip>
+                </Button>
+                <Button Grid.Column="2" 
+                        Grid.Row="1" 
+                        Style="{StaticResource Button_H3}"
+                        Command="{Binding routeCommand}"
+                        CommandParameter="RemovePrimaryKey">
+                    <Border Style="{StaticResource Border_H3}">
+                        <TextBlock Text="PrimaryKey" 
+                                   TextDecorations="Strikethrough" 
+                                   Style="{StaticResource TextBlock_H3}" 
+                                   Margin="3,0,3,0"/>
+                    </Border>
+                    <Button.ToolTip>
+                        <TextBlock Text="Remove primary key from table"/>
+                    </Button.ToolTip>
+                </Button>
+                <Button Grid.Column="3" 
+                        Grid.Row="1" 
+                        Style="{StaticResource Button_H3}"
+                        Command="{Binding routeCommand}"
+                        CommandParameter="AddPrimaryKey">
+                    <Border Style="{StaticResource Border_H3}">
+                        <TextBlock Text="PrimaryKey" 
+                                   Style="{StaticResource TextBlock_H3}" 
+                                   Margin="3,0,3,0"/>
+                    </Border>
+                    <Button.ToolTip>
+                        <TextBlock Text="Add primary key to table"/>
+                    </Button.ToolTip>
+                </Button>
+            </Grid>
+
+            <Grid x:Name="CentralPanel" 
+                  Grid.Row="1"
+                  DataContext="{Binding }">
+                <Frame Name="CentralFrame" 
+                       Content="{Binding ActiveModePage}"/>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Page>

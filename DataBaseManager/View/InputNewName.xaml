@@ -1,0 +1,47 @@
+﻿<Page x:Class="DataBaseManager.View.InputNewName"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DataBaseManager.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="60" d:DesignWidth="340"
+      Background="LightCyan"
+      Title="InputNewName">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Text="NewName" Style="{StaticResource TextBlock_H2}"/>
+            <Border Grid.Column="1" Style="{StaticResource Border_H2}">
+                <TextBox Text="{Binding NewTableName}" Style="{StaticResource TextBox_H2}"/>
+            </Border>
+        </Grid>
+
+        <Border Style="{StaticResource Border_H3}" 
+                Grid.Column="1"
+                Grid.Row="1"
+                Height="25" 
+                Width="60"
+                HorizontalAlignment="Right">
+            <Button Content="Accept" 
+                    Style="{StaticResource Button_H3}"
+                    VerticalAlignment="Center"
+                    Command="{Binding acceptCommand}"/>
+        </Border>
+    </Grid>
+</Page>
